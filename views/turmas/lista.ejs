@@ -1,0 +1,29 @@
+<%- include('../includes/header.ejs', {titulo: 'Lista das Turmas'}) %>
+
+<main>
+    <h2>Lista das Turms</h2>
+    <a href="/turmas/novo" class="btn btn-principal"> Adicionar Turmas</a>
+
+    <table class="dados-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let turmas of dadosTurmas) { %>
+            <tr>
+                <td><%= turmas.nome_turma %></td>
+                <td class="acoes">
+                    <a href="/turmas/editar/<%= turmas.id_turma %>" class="btn btn-edit">Editar</a>
+                    <form action="/turmas/excluir/<%= turmas.id_turma %>" method="POST">
+                        <button type="submit" class="btn btn-delete">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</main>
+
+<%- include('../includes/footer.ejs') %>
